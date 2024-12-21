@@ -45,7 +45,7 @@ To develop a robust C library for copying directories and files that supports:
    - Implements the file and directory copying functionality.
    - Includes helper functions for error handling and resource cleanup.
 
-3. **`part4.c`**:
+3. **`main.c`**:
    - A sample program that demonstrates how to use the library.
    - Handles command-line arguments for source, destination, and flags.
 
@@ -63,7 +63,7 @@ To develop a robust C library for copying directories and files that supports:
  
   2. Compile the main program:
      ```bash
-     gcc part4.c -L. -lcopytree -o main_program
+     gcc main.c -L. -lcopytree -o main_program
      ```
  
   ### Running the Program
