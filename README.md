@@ -52,16 +52,6 @@ To develop a robust C library for copying directories and files that supports:
 ---
 
 ## Usage
-
-### Compilation
-
-1. Compile the library:
-   ```bash
-   gcc -c copytree.c -o copytree.o
-   ar rcs libcopytree.a copytree.o
-
-
-## Usage
  
   ### Compilation
  
