@@ -60,26 +60,57 @@ To develop a robust C library for copying directories and files that supports:
    gcc -c copytree.c -o copytree.o
    ar rcs libcopytree.a copytree.o
 
-### Running the Program
-Run the program with source and destination directories, and optional flags:
-./main_program [-l] [-p] <source_directory> <destination_directory>
- 
-### Command-Line Options:
- - `-l`: Copy symbolic links as links (instead of the content they point to).
- - `-p`: Preserve file permissions during copying.
 
- ### Example Commands:
- 1. Copy directory structure without symbolic link or permission handling:
-    ./main_program source_directory destination_directory
+## Usage
  
- 2. Copy directory structure with symbolic link and permission handling:
-    ./main_program -l -p source_directory destination_directory
+  ### Compilation
  
- ### Testing:
+  1. Compile the library:
+     ```bash
+     gcc -c copytree.c -o copytree.o
+     ar rcs libcopytree.a copytree.o
+     ```
  
- Sample Directory Structure:
- Create the following test structure under `source_directory`:
- source_directory/
+  2. Compile the main program:
+     ```bash
+     gcc part4.c -L. -lcopytree -o main_program
+     ```
+ 
+  ### Running the Program
+ 
+  Run the program with source and destination directories, and optional flags:
+ 
+     ```bash
+     ./main_program [-l] [-p] <source_directory> <destination_directory>
+     ```
+ 
+  ### Command-Line Options
+ 
+  - **`-l`**: Copy symbolic links as links (instead of the content they point to).
+  - **`-p`**: Preserve file permissions during copying.
+ 
+  ### Example Commands
+
+  1. Copy directory structure without symbolic link or permission handling:
+     ```bash
+     ./main_program source_directory destination_directory
+     ```
+ 
+  2. Copy directory structure with symbolic link and permission handling:
+     ```bash
+     ./main_program -l -p source_directory destination_directory
+     ```
+ 
+  ---
+ 
+  ## Testing
+ 
+  ### Sample Directory Structure
+ 
+  Create the following test structure under `source_directory`:
+ 
+  ```
+  source_directory/
   ├── file1.txt
   ├── file2.txt
   ├── subdir1/
@@ -88,10 +119,14 @@ Run the program with source and destination directories, and optional flags:
   └── subdir2/
       ├── file5.txt
       └── link_to_file1 -> ../file1.txt
+  ```
  
- Expected Output:
- After running the program, `destination_directory` should mirror the structure of `source_directory`:
- destination_directory/
+  ### Expected Output
+ 
+  After running the program, `destination_directory` should mirror the structure of `source_directory`:
+ 
+  ```
+  destination_directory/
   ├── file1.txt
   ├── file2.txt
   ├── subdir1/
@@ -100,3 +135,5 @@ Run the program with source and destination directories, and optional flags:
   └── subdir2/
       ├── file5.txt
       └── link_to_file1 -> ../file1.txt
+  ```
+ /
